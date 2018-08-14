@@ -1,2 +1,43 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Simple Map</title>
+    <meta name="viewport" content="initial-scale=1.0">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map, #map2 {
+        height: 50%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+    <div id="map2"></div>
+    <script>
+      var map;
+      var map2;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 40.785091, lng: -73.968285},
+          zoom: 8
+        });
+        map2 = new google.maps.Map(document.getElementById('map2'), {
+          center: {lat: 37.7749, lng: -122.4194},
+          zoom: 8
+        });
+      }
+    </script>
+    <script async defer
+      {{!-- api key in .env file --}}
+      src="https://maps.googleapis.com/maps/api/js?key=MY_API_KEY&callback=initMap">
+    </script>
+  </body>
+</html>
